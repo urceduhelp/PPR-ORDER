@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ඩ<!DOCTYPE html>
 <html lang="si"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ප්‍රශ්නපත්‍ර ඇණවුම් පත්‍රය</title>
@@ -24,11 +24,12 @@ button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:12px 16px
 button.s{background:var(--bg);color:var(--tx);border:1px solid var(--ln);padding:6px 10px;font-weight:400}
 .tot{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:700;margin-top:8px}
 .hint{background:rgba(36,87,214,.1);padding:8px 10px;border-radius:8px;margin-top:8px;font-size:.9rem}
+.nt{border:2px solid var(--pr);background:rgba(36,87,214,.12);border-radius:12px;padding:12px 14px;margin:8px 0 12px;font-weight:700;font-size:1.02rem}.nt.pay{border-color:var(--wn);background:rgba(179,38,30,.1)}.gh{font-weight:700;margin:12px 0 6px;color:var(--pr)}
 #done{display:none;border-color:var(--ok)}#done h2{color:var(--ok)}
 #inv{position:fixed;left:-10000px;top:0;width:794px;background:#fff;color:#111;padding:40px;font:14px/1.55 "Noto Sans Sinhala","Noto Sans Tamil",sans-serif}
 #inv table{width:100%;border-collapse:collapse}#inv th,#inv td{border-bottom:1px solid #ccd;padding:6px 4px;text-align:left}#inv th{background:#eef1f8}#inv .n{text-align:right}
 </style></head><body><div class="w">
-<h1>QS PPR Studio – ප්‍රශ්නපත්‍ර ඇණවුම් පත්‍රය</h1>
+<h1>PAPER STUDIO – ප්‍රශ්නපත්‍ර ඇණවුම් කිරීම</h1>
 <p class="mu">ප්‍රශ්නපත්‍ර වර්ග 3ක්: ඒකක පරීක්ෂණ (18), වාර පරීක්ෂණ (6), උපකාරක පත්‍ර (6). පිළිතුරු පත්‍ර නොමිලේ. ඔබේ ගුරුවරයාගේ / ආයතනයේ / පාසලේ නම ප්‍රශ්නපත්‍රයේ ඉහළ Header එකට ඇතුළත් කෙරේ.</p>
 
 <div class="c"><h2>① ඔබේ තොරතුරු</h2>
@@ -44,9 +45,10 @@ button.s{background:var(--bg);color:var(--tx);border:1px solid var(--ln);padding
 <p class="wn">⚠ අක්ෂර දෝෂ සඳහා අපගේ වගකීමක් නැත. නිවැරදි අකුරු ඇතුළත් කරන්න. දෝෂ සහිත නම් ඇතුළත් කර ඇති විට එය යළි නිවැරදි කර ලබා දීමක් සිදු නොකෙරේ.</p></div>
 
 <div class="c"><h2>③ අවශ්‍ය ප්‍රශ්නපත්‍ර</h2>
+<div class="nt">📢 ඒකක පරීක්ෂණ ප්‍රශ්නපත්‍ර ඉල්ලුම් කළ යුත්තේ ශ්‍රේණිය අනුවයි: <b>10 ශ්‍රේණිය ඒකක 10ක්</b> (10-1 සිට 10-10 දක්වා) සහ <b>11 ශ්‍රේණිය ඒකක 8ක්</b> (11-1 සිට 11-8 දක්වා). උදා: <b>10-1</b> යනු ඉතිහාසය හැදෑරීමේ මූලාශ්‍ර පාඩමයි.</div>
 <select id="md"><option value="full">Full package (ඒකක 18 + වාර 6 + උපකාරක 6)</option><option value="unit">Unit test papers – 18ම</option><option value="term">Term test papers – 6ම</option><option value="help">උපකාරක පත්‍ර 6ම</option><option value="list">Select from list (තෝරා ගන්න)</option></select>
 <div id="lst" style="display:none">
-<label>ඒකක පරීක්ෂණ ප්‍රශ්නපත්‍ර <button class="s" type="button" id="ua">සියල්ල</button> <button class="s" type="button" id="uc">ඉවත් කරන්න</button></label><div class="g" id="ul"></div>
+<label>ඒකක පරීක්ෂණ ප්‍රශ්නපත්‍ර <button class="s" type="button" id="ua">සියල්ල</button> <button class="s" type="button" id="uc">ඉවත් කරන්න</button></label><div class="gh">10 ශ්‍රේණිය – ඒකක 10</div><div class="g" id="ul"></div><div class="gh">11 ශ්‍රේණිය – ඒකක 8</div><div class="g" id="ul2"></div>
 <label>වාර පරීක්ෂණ ප්‍රශ්නපත්‍ර <button class="s" type="button" id="ta">සියල්ල</button> <button class="s" type="button" id="tc">ඉවත් කරන්න</button></label><div class="g" id="tl"></div>
 <label>උපකාරක පත්‍ර – අවශ්‍ය පිටපත් ගණන (0–6)</label><input id="hq" type="number" min="0" max="6" value="0" style="max-width:120px"></div></div>
 
@@ -54,6 +56,7 @@ button.s{background:var(--bg);color:var(--tx);border:1px solid var(--ln);padding
 <table class="p" id="pt"></table><div id="ht2"></div><div class="tot"><span>මුළු මුදල</span><span id="tt">රු. 0</span></div>
 <p class="mu">තනි පත්‍රයක් රු. 500/-. පත්‍ර ගණන වැඩි වන විට වට්ටම් ලැබේ. ඒකක 18 රු. 2000, වාර 6 රු. 1000, උපකාරක 6 රු. 1000, Full package රු. 3000 ලෙස ස්වයංක්‍රීයව අඩුම මිල යෙදේ. මිල දී ගන්නා සෑම පත්‍රයක් සමගම වරණ මාරු කළ අතිරේක පත්‍ර 3ක් (වෙන් වෙන් පිළිතුරු පත්‍ර සමග) ලැබේ – එනම් 1ක් ගත්විට පත්‍ර 4ක්.</p>
 <p class="wn">PDF යළි අලෙවිය, Social media වල Share කිරීම ආදී කර්තෘ අයිතීන් උල්ලංඝනය වන ඕනෑම ක්‍රියාවක් තහනම් වේ.</p>
+<div class="nt pay">💳 ඇණවුම් කළ පසු මුදල් ගෙවා, Invoice එක සමග මුදල් ගෙවූ රිසිට්පත WhatsApp කරන්න: <b>0716637804</b></div>
 <button id="sb" type="button" style="width:100%;margin-top:8px">ඇණවුම Submit කරන්න</button><p class="wn" id="er"></p></div>
 
 <div class="c" id="done"><h2>✔ ඔබේ ඇණවුම සාර්ථකව Submit වුණා.</h2>
@@ -65,7 +68,8 @@ button.s{background:var(--bg);color:var(--tx);border:1px solid var(--ln);padding
 <div id="inv"></div>
 <script>
 // අවශ්‍ය නම් ඒකක 18හි නම් මෙතැන සංස්කරණය කරන්න
-const UNITS=Array.from({length:18},(_,i)=>'ඒකකය '+String(i+1).padStart(2,'0'));
+const UNITS=[...Array.from({length:10},(_,i)=>'10-'+(i+1)),...Array.from({length:8},(_,i)=>'11-'+(i+1))];
+UNITS[0]='10-1 (ඉතිහාසය හැදෑරීමේ මූලාශ්‍ර)'; // අනෙක් ඒකකවල නම් මෙහි එකතු කළ හැක: UNITS[1]='10-2 (...)'
 const TERMS=['10-1','10-2','10-3','11-1','11-2','11-3'];
 const WM='94716637804',$=id=>document.getElementById(id),Rs=n=>'රු. '+n.toLocaleString('en-US')+'/-';
 const TIERS=[[1,500],[3,300],[6,150],[12,100],[30,75]]; // ඇණවුමේ N වන පත්‍රයට අදාළ මිල
@@ -73,8 +77,8 @@ function marg(n){let s=0;for(let i=1;i<=n;i++)s+=TIERS.find(t=>i<=t[0])[1];retur
 function best(u,t,h){let b=null;for(let m=0;m<8;m++){const ub=m&1&&u==18,tb=m&2&&t==6,hb=m&4&&h==6;if((m&1&&u!=18)||(m&2&&t!=6)||(m&4&&h!=6))continue;
  const rem=u+t+h-(ub?18:0)-(tb?6:0)-(hb?6:0),c=(ub?2000:0)+(tb?1000:0)+(hb?1000:0)+marg(rem);if(!b||c<b.c)b={c,ub,tb,hb,rem}}
  if(u==18&&t==6&&h==6&&3000<b.c)b={c:3000,full:1,rem:0};return b}
-UNITS.forEach((n,i)=>$('ul').insertAdjacentHTML('beforeend','<label><input type="checkbox" data-u="'+i+'">'+n+'</label>'));
-TERMS.forEach((n,i)=>$('tl').insertAdjacentHTML('beforeend','<label><input type="checkbox" data-t="'+i+'">'+n+'</label>'));
+UNITS.forEach((n,i)=>$(i<10?'ul':'ul2').insertAdjacentHTML('beforeend','<label><input type="checkbox" data-u="'+i+'">'+n+'</label>'));
+TERMS.forEach((n,i)=>$('tl').insertAdjacentHTML('beforeend','<label><input type="checkbox" data-t="'+i+'">වාර '+n+'</label>'));
 const all=(sel,v)=>document.querySelectorAll(sel).forEach(x=>x.checked=v);
 $('ua').onclick=()=>{all('[data-u]',1);calc()};$('uc').onclick=()=>{all('[data-u]',0);calc()};
 $('ta').onclick=()=>{all('[data-t]',1);calc()};$('tc').onclick=()=>{all('[data-t]',0);calc()};
@@ -107,7 +111,7 @@ async function submit(){const e=$('er');e.textContent='';
  if(!o.total)return e.textContent='අවම වශයෙන් එක් ප්‍රශ්නපත්‍රයක් තෝරන්න.';
  if($('dm').value!='WhatsApp'&&!$('em').value.trim())return e.textContent='E-mail ක්‍රමය තෝරා ඇති නිසා E-mail ලිපිනය ඇතුළත් කරන්න.';
  const d=new Date(),no='INV-'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+Math.floor(1000+Math.random()*9000),wa=$('wa').value.trim()||ph;
- $('inv').innerHTML='<div style="display:flex;justify-content:space-between;border-bottom:3px solid #2457d6;padding-bottom:10px"><div><div style="font-size:24px;font-weight:700;color:#2457d6">ප්‍රශ්න ස්ටුඩියෝ</div><div>O/L ප්‍රශ්නපත්‍ර</div><div>0701551279 (VC) / 0716637804 (WM)</div></div><div class="n" style="text-align:right"><div style="font-size:22px;font-weight:700">INVOICE</div><div>'+no+'</div><div>'+d.toLocaleDateString('en-GB')+'</div></div></div>'
+ $('inv').innerHTML='<div style="display:flex;justify-content:space-between;border-bottom:3px solid #2457d6;padding-bottom:10px"><div><div style="font-size:24px;font-weight:700;color:#2457d6">PAPER STUDIO</div><div>O/L ප්‍රශ්නපත්‍ර</div><div>0701551279 (VC) / 0716637804 (WM)</div></div><div class="n" style="text-align:right"><div style="font-size:22px;font-weight:700">INVOICE</div><div>'+no+'</div><div>'+d.toLocaleDateString('en-GB')+'</div></div></div>'
  +'<p><b>ඇණවුම්කරු:</b> '+esc(nm)+'<br><b>දුරකතන:</b> '+esc(ph)+' &nbsp; <b>WhatsApp:</b> '+esc(wa)+($('em').value?'<br><b>E-mail:</b> '+esc($('em').value):'')+'<br><b>ලබා ගන්නා ක්‍රමය:</b> '+esc($('dm').value)+'</p>'
  +'<p><b>Header නම:</b><br>'+hd.filter(Boolean).map(esc).join('<br>')+'</p>'
  +'<table><tr><th>විස්තරය</th><th class="n">ප්‍රමාණය</th><th class="n">ඒකක මිල</th><th class="n">මුදල (රු.)</th></tr>'+o.L.map(x=>'<tr><td>'+esc(x[0])+'</td><td class="n">'+x[1]+'</td><td class="n">'+(x[2]<0?'':x[2].toLocaleString('en-US'))+'</td><td class="n">'+x[3].toLocaleString('en-US')+'</td></tr>').join('')+'<tr><td colspan="3" class="n"><b>මුළු මුදල</b></td><td class="n"><b>'+o.total.toLocaleString('en-US')+'</b></td></tr></table>'
