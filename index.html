@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="si"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ප්‍රශ්නපත්‍ර ඇණවුම් පත්‍රය</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--tx:#1c2233;--mu:#5b6579;--ln:#dde1ea;--pr:#2457d6;--prt:#fff;--ok:#12805c;--wn:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12151d;--card:#1b2030;--tx:#e8ebf3;--mu:#9aa5bd;--ln:#2d3448;--pr:#6c93ff;--prt:#0b1020;--ok:#4cc79b;--wn:#ff8a80}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Noto Sans Sinhala","Noto Sans Tamil",system-ui,sans-serif}
+.w{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:8px 0 4px}h2{font-size:1.1rem;margin:0 0 10px}
+.c{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px;margin:14px 0}
+label{display:block;font-weight:700;font-size:.9rem;margin:10px 0 4px}
+input,select{width:100%;padding:10px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+.r{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.r{grid-template-columns:1fr}}
+.mu{color:var(--mu);font-size:.85rem}.wn{color:var(--wn);font-size:.85rem}
+table.p{width:100%;border-collapse:collapse;font-size:.95rem}table.p td{padding:5px 0;border-bottom:1px dashed var(--ln)}table.p td:last-child{text-align:right;white-space:nowrap}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px}
+.g label{display:flex;gap:8px;align-items:center;font-weight:400;margin:0;padding:8px;border:1px solid var(--ln);border-radius:10px}.g input{width:auto}
+button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:12px 16px;background:var(--pr);color:var(--prt);font-weight:700}
+button.s{background:var(--bg);color:var(--tx);border:1px solid var(--ln);padding:6px 10px;font-weight:400}
+.tot{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:700;margin-top:8px}
+.hint{background:rgba(36,87,214,.1);padding:8px 10px;border-radius:8px;margin-top:8px;font-size:.9rem}
+#done{display:none;border-color:var(--ok)}#done h2{color:var(--ok)}
+#inv{position:fixed;left:-10000px;top:0;width:794px;background:#fff;color:#111;padding:40px;font:14px/1.55 "Noto Sans Sinhala","Noto Sans Tamil",sans-serif}
+#inv table{width:100%;border-collapse:collapse}#inv th,#inv td{border-bottom:1px solid #ccd;padding:6px 4px;text-align:left}#inv th{background:#eef1f8}#inv .n{text-align:right}
+</style></head><body><div class="w">
+<h1>QS PPR Studio – ප්‍රශ්නපත්‍ර ඇණවුම් පත්‍රය</h1>
+<p class="mu">ප්‍රශ්නපත්‍ර වර්ග 3ක්: ඒකක පරීක්ෂණ (18), වාර පරීක්ෂණ (6), උපකාරක පත්‍ර (6). පිළිතුරු පත්‍ර නොමිලේ. ඔබේ ගුරුවරයාගේ / ආයතනයේ / පාසලේ නම ප්‍රශ්නපත්‍රයේ ඉහළ Header එකට ඇතුළත් කෙරේ.</p>
+
+<div class="c"><h2>① ඔබේ තොරතුරු</h2>
+<label>අයදුම් කරන්නාගේ නම *</label><input id="nm">
+<div class="r"><div><label>දුරකතන අංකය *</label><input id="ph" type="tel"></div>
+<div><label>ඇණවුම WhatsApp කළ යුතු අංකය</label><input id="wa" type="tel" placeholder="හිස් නම් දුරකතන අංකයම"></div></div>
+<label>E-mail (e-mail මගින් අවශ්‍ය නම් පමණක්)</label><input id="em" type="email">
+<label>ඇණවුම ලැබිය යුතු ක්‍රමය</label><select id="dm"><option>WhatsApp</option><option>E-mail</option><option>WhatsApp සහ E-mail දෙකම</option></select></div>
+
+<div class="c"><h2>② ප්‍රශ්නපත්‍ර Header එකට ඇතුළත් කරන නම</h2>
+<p class="mu">භාෂා තුනෙන්, දෙකකින් හෝ එකකින් පමණක් වුව ඇතුළත් කළ හැක (අවම වශයෙන් එකක්).</p>
+<label>සිංහලෙන්</label><input id="hs"><label>දෙමළෙන්</label><input id="ht"><label>ඉංග්‍රීසියෙන්</label><input id="he">
+<p class="wn">⚠ අක්ෂර දෝෂ සඳහා අපගේ වගකීමක් නැත. නිවැරදි අකුරු ඇතුළත් කරන්න. දෝෂ සහිත නම් ඇතුළත් කර ඇති විට එය යළි නිවැරදි කර ලබා දීමක් සිදු නොකෙරේ.</p></div>
+
+<div class="c"><h2>③ අවශ්‍ය ප්‍රශ්නපත්‍ර</h2>
+<select id="md"><option value="full">Full package (ඒකක 18 + වාර 6 + උපකාරක 6)</option><option value="unit">Unit test papers – 18ම</option><option value="term">Term test papers – 6ම</option><option value="help">උපකාරක පත්‍ර 6ම</option><option value="list">Select from list (තෝරා ගන්න)</option></select>
+<div id="lst" style="display:none">
+<label>ඒකක පරීක්ෂණ ප්‍රශ්නපත්‍ර <button class="s" type="button" id="ua">සියල්ල</button> <button class="s" type="button" id="uc">ඉවත් කරන්න</button></label><div class="g" id="ul"></div>
+<label>වාර පරීක්ෂණ ප්‍රශ්නපත්‍ර <button class="s" type="button" id="ta">සියල්ල</button> <button class="s" type="button" id="tc">ඉවත් කරන්න</button></label><div class="g" id="tl"></div>
+<label>උපකාරක පත්‍ර – අවශ්‍ය පිටපත් ගණන (0–6)</label><input id="hq" type="number" min="0" max="6" value="0" style="max-width:120px"></div></div>
+
+<div class="c"><h2>④ මිල ගණන් සහ Invoice</h2>
+<table class="p" id="pt"></table><div id="ht2"></div><div class="tot"><span>මුළු මුදල</span><span id="tt">රු. 0</span></div>
+<p class="mu">තනි පත්‍රයක් රු. 500/-. පත්‍ර ගණන වැඩි වන විට වට්ටම් ලැබේ. ඒකක 18 රු. 2000, වාර 6 රු. 1000, උපකාරක 6 රු. 1000, Full package රු. 3000 ලෙස ස්වයංක්‍රීයව අඩුම මිල යෙදේ. මිල දී ගන්නා සෑම පත්‍රයක් සමගම වරණ මාරු කළ අතිරේක පත්‍ර 3ක් (වෙන් වෙන් පිළිතුරු පත්‍ර සමග) ලැබේ – එනම් 1ක් ගත්විට පත්‍ර 4ක්.</p>
+<p class="wn">PDF යළි අලෙවිය, Social media වල Share කිරීම ආදී කර්තෘ අයිතීන් උල්ලංඝනය වන ඕනෑම ක්‍රියාවක් තහනම් වේ.</p>
+<button id="sb" type="button" style="width:100%;margin-top:8px">ඇණවුම Submit කරන්න</button><p class="wn" id="er"></p></div>
+
+<div class="c" id="done"><h2>✔ ඔබේ ඇණවුම සාර්ථකව Submit වුණා.</h2>
+<p>ඇණවුම දින 3ක් ඇතුළත Whatsapp හෝ email හෝ මේ ක්‍රම දෙක ඔස්සේ ම ලැබෙනු ඇත. ගැටළු වෙතොත් අමතන්න. 0701551279 (VC) / 0716637804 (WM)</p>
+<p class="mu">Invoice PDF එක ඔබේ උපාංගයට download වුණා. ගෙවීම් කළ පසු රිසිට්පත සහ Invoice එක WhatsApp මගින් එවන්න.</p>
+<button id="sh" type="button">📲 Invoice එක WhatsApp වෙත යවන්න</button> <button class="s" id="dl" type="button">නැවත Download</button></div>
+</div>
+
+<div id="inv"></div>
+<script>
+// අවශ්‍ය නම් ඒකක 18හි නම් මෙතැන සංස්කරණය කරන්න
+const UNITS=Array.from({length:18},(_,i)=>'ඒකකය '+String(i+1).padStart(2,'0'));
+const TERMS=['10-1','10-2','10-3','11-1','11-2','11-3'];
+const WM='94716637804',$=id=>document.getElementById(id),Rs=n=>'රු. '+n.toLocaleString('en-US')+'/-';
+const TIERS=[[1,500],[3,300],[6,150],[12,100],[30,75]]; // ඇණවුමේ N වන පත්‍රයට අදාළ මිල
+function marg(n){let s=0;for(let i=1;i<=n;i++)s+=TIERS.find(t=>i<=t[0])[1];return s}
+function best(u,t,h){let b=null;for(let m=0;m<8;m++){const ub=m&1&&u==18,tb=m&2&&t==6,hb=m&4&&h==6;if((m&1&&u!=18)||(m&2&&t!=6)||(m&4&&h!=6))continue;
+ const rem=u+t+h-(ub?18:0)-(tb?6:0)-(hb?6:0),c=(ub?2000:0)+(tb?1000:0)+(hb?1000:0)+marg(rem);if(!b||c<b.c)b={c,ub,tb,hb,rem}}
+ if(u==18&&t==6&&h==6&&3000<b.c)b={c:3000,full:1,rem:0};return b}
+UNITS.forEach((n,i)=>$('ul').insertAdjacentHTML('beforeend','<label><input type="checkbox" data-u="'+i+'">'+n+'</label>'));
+TERMS.forEach((n,i)=>$('tl').insertAdjacentHTML('beforeend','<label><input type="checkbox" data-t="'+i+'">'+n+'</label>'));
+const all=(sel,v)=>document.querySelectorAll(sel).forEach(x=>x.checked=v);
+$('ua').onclick=()=>{all('[data-u]',1);calc()};$('uc').onclick=()=>{all('[data-u]',0);calc()};
+$('ta').onclick=()=>{all('[data-t]',1);calc()};$('tc').onclick=()=>{all('[data-t]',0);calc()};
+function sel(){const m=$('md').value;let U=[],T=[],H=0;
+ if(m=='list'){document.querySelectorAll('[data-u]:checked').forEach(x=>U.push(UNITS[x.dataset.u]));document.querySelectorAll('[data-t]:checked').forEach(x=>T.push(TERMS[x.dataset.t]));H=Math.max(0,Math.min(6,parseInt($('hq').value)||0))}
+ else{if(m=='full'||m=='unit')U=UNITS.slice();if(m=='full'||m=='term')T=TERMS.slice();if(m=='full'||m=='help')H=6}
+ return{U,T,H}}
+function calc(){const m=$('md').value;$('lst').style.display=m=='list'?'block':'none';
+ const s=sel(),u=s.U.length,t=s.T.length,h=s.H,n=u+t+h,L=[];
+ if(!n){$('pt').innerHTML='<tr><td class="mu">පත්‍ර තෝරා නැත</td><td></td></tr>';$('tt').textContent=Rs(0);$('ht2').innerHTML='';return{...s,L,total:0}}
+ const b=best(u,t,h);let list=0;
+ if(b.full)L.push(['සම්පූර්ණ Package (ඒකක 18 + වාර 6 + උපකාරක 6)',1,3000,3000]);
+ else{if(b.ub)L.push(['ඒකක පරීක්ෂණ ප්‍රශ්නපත්‍ර 18 (Bundle)',1,2000,2000]);if(b.tb)L.push(['වාර පරීක්ෂණ ප්‍රශ්නපත්‍ර 6 (Bundle)',1,1000,1000]);if(b.hb)L.push(['උපකාරක පත්‍ර 6 (Bundle)',1,1000,1000]);
+  const ru=b.ub?[]:s.U,rt=b.tb?[]:s.T,rh=b.hb?0:h;
+  if(ru.length)L.push(['ඒකක පරීක්ෂණ: '+ru.join(', '),ru.length,500,ru.length*500]);if(rt.length)L.push(['වාර පරීක්ෂණ: '+rt.join(', '),rt.length,500,rt.length*500]);if(rh)L.push(['උපකාරක පත්‍ර (පිටපත්)',rh,500,rh*500]);
+  const gross=b.rem*500;if(b.rem&&gross>marg(b.rem))L.push(['ප්‍රමාණ වට්ටම ('+Math.round((1-marg(b.rem)/gross)*100)+'%)',1,-(gross-marg(b.rem)),-(gross-marg(b.rem))])}
+ $('pt').innerHTML=L.map(x=>'<tr><td>'+x[0]+(x[1]>1&&x[3]>0&&x[2]==500?' × '+x[1]:'')+'</td><td>'+(x[3]<0?'− ':'')+Rs(Math.abs(x[3]))+'</td></tr>').join('');
+ $('tt').textContent=Rs(b.c);
+ let hint='';const cats=[['ඒකක පරීක්ෂණ 18ම',u<18&&best(18,t,h).c<=b.c,best(18,t,h).c],['වාර පරීක්ෂණ 6ම',t<6&&best(u,6,h).c<=b.c,best(u,6,h).c],['උපකාරක පත්‍ර 6ම',h<6&&best(u,t,6).c<=b.c,best(u,t,6).c]];
+ cats.forEach(c=>{if(c[1])hint+='<div class="hint">💡 '+c[0]+' තෝරා ගැනීමෙන් මුළු මුදල '+Rs(c[2])+' දක්වා අඩු/සමාන වේ.</div>'});
+ $('ht2').innerHTML=hint;return{...s,L,total:b.c}}
+document.querySelectorAll('input,select').forEach(x=>x.addEventListener('input',calc));calc();
+
+let pdfBlob=null,pdfName='',msg='';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function submit(){const e=$('er');e.textContent='';
+ const o=calc(),nm=$('nm').value.trim(),ph=$('ph').value.trim(),hd=[$('hs').value,$('ht').value,$('he').value].map(x=>x.trim());
+ if(!nm||!ph)return e.textContent='නම සහ දුරකතන අංකය අනිවාර්යයි.';
+ if(!hd.some(Boolean))return e.textContent='Header නම අවම වශයෙන් එක් භාෂාවකින් වත් ඇතුළත් කරන්න.';
+ if(!o.total)return e.textContent='අවම වශයෙන් එක් ප්‍රශ්නපත්‍රයක් තෝරන්න.';
+ if($('dm').value!='WhatsApp'&&!$('em').value.trim())return e.textContent='E-mail ක්‍රමය තෝරා ඇති නිසා E-mail ලිපිනය ඇතුළත් කරන්න.';
+ const d=new Date(),no='INV-'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+Math.floor(1000+Math.random()*9000),wa=$('wa').value.trim()||ph;
+ $('inv').innerHTML='<div style="display:flex;justify-content:space-between;border-bottom:3px solid #2457d6;padding-bottom:10px"><div><div style="font-size:24px;font-weight:700;color:#2457d6">ප්‍රශ්න ස්ටුඩියෝ</div><div>O/L ප්‍රශ්නපත්‍ර</div><div>0701551279 (VC) / 0716637804 (WM)</div></div><div class="n" style="text-align:right"><div style="font-size:22px;font-weight:700">INVOICE</div><div>'+no+'</div><div>'+d.toLocaleDateString('en-GB')+'</div></div></div>'
+ +'<p><b>ඇණවුම්කරු:</b> '+esc(nm)+'<br><b>දුරකතන:</b> '+esc(ph)+' &nbsp; <b>WhatsApp:</b> '+esc(wa)+($('em').value?'<br><b>E-mail:</b> '+esc($('em').value):'')+'<br><b>ලබා ගන්නා ක්‍රමය:</b> '+esc($('dm').value)+'</p>'
+ +'<p><b>Header නම:</b><br>'+hd.filter(Boolean).map(esc).join('<br>')+'</p>'
+ +'<table><tr><th>විස්තරය</th><th class="n">ප්‍රමාණය</th><th class="n">ඒකක මිල</th><th class="n">මුදල (රු.)</th></tr>'+o.L.map(x=>'<tr><td>'+esc(x[0])+'</td><td class="n">'+x[1]+'</td><td class="n">'+(x[2]<0?'':x[2].toLocaleString('en-US'))+'</td><td class="n">'+x[3].toLocaleString('en-US')+'</td></tr>').join('')+'<tr><td colspan="3" class="n"><b>මුළු මුදල</b></td><td class="n"><b>'+o.total.toLocaleString('en-US')+'</b></td></tr></table>'
+ +'<p style="font-size:12px">* පිළිතුරු පත්‍ර නොමිලේ. සෑම පත්‍රයක් සමගම වරණ මාරු කළ අතිරේක පත්‍ර 3ක් (වෙන් වෙන් පිළිතුරු පත්‍ර සමග) ලැබේ.<br>* PDF යළි අලෙවිය, Social media Share කිරීම ඇතුළු කර්තෘ අයිතීන් උල්ලංඝනය කිරීම තහනම්ය.</p>'
+ +'<div style="border:1px solid #ccd;border-radius:8px;padding:10px;margin-top:12px"><b>බැංකු ගිණුම් විස්තර</b><br>🏦 PEOPLE’S BANK – Mathugama<br>💳 A/C: 070-2-001-6-23-28-309<br>👤 UKDA KOSALA<br><br>🏦 BANK OF CEYLON – Kalutara<br>💳 A/C: 89-32-36-00<br>👤 RG LAKMINI</div>';
+ $('sb').disabled=true;$('sb').textContent='Invoice සකසමින්…';
+ try{await document.fonts.ready;const cv=await html2canvas($('inv'),{scale:2,backgroundColor:'#fff'}),pdf=new jspdf.jsPDF('p','mm','a4'),W=210,H=Math.min(297,cv.height*W/cv.width);
+  pdf.addImage(cv.toDataURL('image/jpeg',.92),'JPEG',0,0,W,H);pdfBlob=pdf.output('blob');pdfName=no+'.pdf';
+  msg='ඇණවුම '+no+'\nනම: '+nm+'\nදුරකතන: '+ph+'\nWhatsApp: '+wa+'\nHeader: '+hd.filter(Boolean).join(' / ')+'\nපත්‍ර: '+o.L.map(x=>x[0]).join('; ')+'\nමුළු මුදල: '+Rs(o.total)+'\nලබා ගන්නා ක්‍රමය: '+$('dm').value;
+  save();$('done').style.display='block';$('done').scrollIntoView({behavior:'smooth'})}
+ catch(x){e.textContent='Invoice සෑදීමේ දෝෂයක්: '+x.message}
+ $('sb').disabled=false;$('sb').textContent='ඇණවුම Submit කරන්න'}
+function save(){const a=document.createElement('a');a.href=URL.createObjectURL(pdfBlob);a.download=pdfName;document.body.appendChild(a);a.click();a.remove()}
+$('sb').onclick=submit;$('dl').onclick=save;
+$('sh').onclick=async()=>{const f=new File([pdfBlob],pdfName,{type:'application/pdf'});
+ if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],text:msg});return}catch(x){if(x.name=='AbortError')return}}
+ window.open('https://wa.me/'+WM+'?text='+encodeURIComponent(msg),'_blank')};
+</script></body></html>
